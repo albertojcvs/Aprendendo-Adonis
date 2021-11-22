@@ -9,7 +9,7 @@ static get computed(){
   return ['url']
 }
 
-getUrl(id){
+getUrl({id}){
   return `${Env.get('APP_URL')}/files/${id}`
 }
 }
