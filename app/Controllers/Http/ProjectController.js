@@ -3,14 +3,15 @@
 const Project = use("App/Models/Project");
 
 class ProjectController {
-  async index() {
-    const projects = await Project.query().with("user").fetch();
+  async index({params}) {
+    const projects = await Project.query()
+    .with("user").fetch();
 
     return projects;
   }
 
   async store({ request, response, auth }) {
-    const data = request.only(["title", "decription"]);
+    const data = request.only(["title", "description"]);
 
     const project = await Project.create({ ...data, user_id: auth.user_id });
   }

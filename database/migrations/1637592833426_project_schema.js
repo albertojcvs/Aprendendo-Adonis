@@ -13,6 +13,8 @@ class ProjectSchema extends Schema {
       .inTable("users")
       .onUpdate('CASCADE')
       .onDelete('SET NULL')
+      table.string('title').notNullable()
+      table.string('description').notNullable()
       table.increments();
       table.timestamps();
     });

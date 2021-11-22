@@ -51,7 +51,7 @@ class ForgetPasswordController {
           .send({ error: { message: "O token de recuperaçao está experido" } });
       }
 
-      user.tokean = null
+      user.token = null
       user.token_created_at = null
       user.password = password;
 
