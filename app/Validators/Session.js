@@ -1,5 +1,7 @@
 'use strict'
 
+const Antl = use('Antl')
+
 class Session {
   get validatorAll(){
     return true
@@ -10,6 +12,9 @@ class Session {
      password:'required'
     }
   }
+  get messages() {
+    return Antl.list()
+    }
 }
 
 module.exports = Session
