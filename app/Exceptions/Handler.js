@@ -1,5 +1,9 @@
 "use strict";
 
+const Raven = require('raven')
+
+const Config = use('Config')
+
 const BaseExceptionHandler = use("BaseExceptionHandler");
 
 const Env = use("Env");
@@ -22,7 +26,10 @@ class ExceptionHandler extends BaseExceptionHandler {
     return response.status(erros.status).send()
   }
 
-  async report(error, { request }) {}
+  async report(error) {
+    Raven.config(Config.get('services.sentry.dsn'))
+    Raven.captureException(error)
+  }
 }
 
 module.exports = ExceptionHandler;
